@@ -85,9 +85,9 @@ std::vector<std::wstring> BatchRename(const std::wstring& directoryPath, std::ws
 
 		try {
 			//重命名
-			std::wstring oldPath = sonDirectoryPath + file;
+			std::wstring oldPath = sonDirectoryPath + L"\\" + file;
 			file.replace(offset, serialNumber.length(), serialNumber);
-			std::wstring newPath = sonDirectoryPath + file;
+			std::wstring newPath = sonDirectoryPath + L"\\" + file;
 
 			std::filesystem::rename(oldPath, newPath);
 			newFiles.push_back(file);
@@ -134,7 +134,7 @@ int main() {
 
 		int offset = subFolders.size() < 10 ? 0 : 1;
 
-		std::wcout << L"请输入Y以确认开始批量重命名，其余任意按钮重新选择批量重命名对象";
+		std::wcout << L"请输入Y以确认开始批量重命名，其余任意按钮重新选择批量重命名对象" << std::endl;
 		std::wstring input;
 		std::getline(std::wcin, input);
 
